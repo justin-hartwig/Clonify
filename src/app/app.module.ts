@@ -40,8 +40,8 @@ import { MatListModule } from '@angular/material/list';
 })
 export class AppModule { 
   constructor(swUpdate: SwUpdate) {
-    swUpdate.available.subscribe(() => {
-      if(confirm("Neue Version verfügbar! Jetzt neuladen?")) {
+    swUpdate.versionUpdates.subscribe((evt) => {
+      if(evt.type === 'VERSION_READY' && confirm("Neue Version verfügbar! Jetzt neuladen?")) {
         location.reload();
       }
     }
